@@ -32,14 +32,12 @@ Update `ZipPayRecord` so that `lastUpdated` can be a string or a Date
 
 ### Part 2: Unions as enums
 
-Set up the following union types
+Set up the following union types or as enums
 
 UserType, can be a corporation or a person
 TransactionType, can be a payment or a charge
 TransactionStatus, can be settled or open
 VisibilityType, can be public or private
-
-Update `ZipPayRecord` so that `lastUpdated` can be 
 
 ### Part 3: Using a union enum
 
@@ -47,9 +45,9 @@ Build a `User` type with the following properties
 - displayName / string
 - payeeId / string
 - email / string
-- userType / UserType
-- picture / A sub-type which has values 'large', 'medium' and 'thumbnail' each of which can be a string
-- address / Address
+- userType / `UserType`
+- picture / A sub-type which has properties 'large', 'medium' and 'thumbnail' each of which can be a string
+- address / `Address`
 
 ## Lab 4: Intersections or extensions
 
