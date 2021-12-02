@@ -34,10 +34,10 @@ Update `ZipPayRecord` so that `lastUpdated` can be a string or a Date
 
 Set up the following union types or as enums
 
-UserType, can be a corporation or a person
-TransactionType, can be a payment or a charge
-TransactionStatus, can be settled or open
-VisibilityType, can be public or private
+UserType, can be a 'corporation' or a 'person'
+TransactionType, can be a 'payment' or a 'charge'
+TransactionStatus, can be 'settled' or 'open'
+VisibilityType, can be 'public' or 'private'
 
 ### Part 3: Using a union enum
 
@@ -61,9 +61,9 @@ Build a Transaction type which inherits from ZipPayRecord and has the following 
 
 - payorId / string
 - payeeId / string
-- txDate / string or Date
+- txDate / string or Date / string | Date
 - txType / TransactionType
 - txStatus / TransactionStatus
 - reason / string
-- visibility / VisibilityTypes
+- visibility / VisibilityType
 
