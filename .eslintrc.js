@@ -3,6 +3,18 @@ module.exports = {
   root: true,
   parserOptions: {
     project: 'tsconfig.json',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  extends: '@speedingplanet/eslint-config/typescript',
+  extends: [
+    '@speedingplanet/eslint-config/typescript',
+    'react-app',
+    'react-app/jest',
+    'plugin:react-hooks/recommended',
+  ],
+  rules: {
+    '@typescript-eslint/restrict-template-expressions': [ 'off' ],
+    '@typescript-eslint/no-base-to-string': [ 'off' ],
+  },
 };

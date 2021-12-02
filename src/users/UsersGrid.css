@@ -1,0 +1,19 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.flex-header {  
+  border-bottom: 2px black solid;
+}
+
+.flex-header, .flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-column-header, .flex-cell {
+  flex: 1;
+}
