@@ -13,6 +13,23 @@ let initialState = { counter: 1 };
 // How do we want to change that state?
 // Action(s)
 let incrementAction = { type: 'INCREMENT' };
+let decrementAction = { type: 'DECREMENT' };
+// let addAction = { type: 'ADD', payload: 5 };
+/*
+let addAction = {
+  type: 'ADD',
+  payload: {
+    amount: 5,
+  },
+};
+*/
+
+const add = (amount: number) => ({
+  type: 'ADD',
+  payload: {
+    amount,
+  },
+});
 
 // How do we implement/apply changes?
 const reducer: Reducer<ReduxState, AnyAction> = (
@@ -22,6 +39,11 @@ const reducer: Reducer<ReduxState, AnyAction> = (
   switch (action.type) {
     case 'INCREMENT':
       return { ...state, counter: state.counter + 1 };
+    case 'DECREMENT':
+      return { ...state, counter: state.counter - 1 };
+    case 'ADD':
+      return { ...state, counter: state.counter + action.payload.amount };
+
     default:
       return state;
   }
@@ -43,7 +65,7 @@ store.subscribe(() => {
 
 store.dispatch(incrementAction);
 store.dispatch(incrementAction);
-store.dispatch({ type: 'DECREMENT' });
-store.dispatch(incrementAction);
+store.dispatch(decrementAction);
+store.dispatch(add(10));
 store.dispatch(incrementAction);
 store.dispatch(incrementAction);
