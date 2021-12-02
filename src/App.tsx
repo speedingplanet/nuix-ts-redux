@@ -15,7 +15,7 @@ function App(): JSX.Element {
       <main className="container">
         <header className="row">
           <div className="col">
-            <h1>Esri React + TypeScript</h1>
+            <h1>Nuix React + TypeScript</h1>
           </div>
         </header>
         <hr />
