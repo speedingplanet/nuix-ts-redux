@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
-    "@speedingplanet/eslint-config": "file:../../Projects/speedingplanet/eslint-config",
     "@speedingplanet/rest-server": "^1.2.1",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
