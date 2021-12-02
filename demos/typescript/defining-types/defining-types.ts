@@ -10,6 +10,13 @@ export type TCar = {
   model: string;
 };
 
+// Can do this with a type, can't do this with an interface
+// type daysOfTheWeek = 'Sunday' | 'Monday' | 'Tuesday';
+
+// ^ does not generate JavaScript output
+// ############################################
+// V does generate JavaScript output
+
 export class CarClass {
   make: string;
   model: string;

@@ -9,7 +9,7 @@ function getStringOrNumber(): string | number {
 stringOrNumber = getStringOrNumber();
 
 // But you must be careful about how you use them
-function subtract( x: number, y: number ) {
+function subtract( x: number, y: number ): number {
   return x - y;
 }
 
@@ -42,6 +42,9 @@ interface Bar {
   bar: number;
 }
 
+// This is called a discriminated union
+type FooBar = Foo | Bar;
+
 function handleFooBar( fooBar: Foo | Bar ) {
   // Can access, because commonProp is on both
   console.log( 'commonProp:', fooBar.commonProp );
@@ -52,11 +55,29 @@ function handleFooBar( fooBar: Foo | Bar ) {
 
   // Works, type guard
   if ( 'foo' in fooBar ) {
-    console.log( 'foo', fooBar.foo );
+    // if ( ( fooBar as Foo ).foo ) {
+    // FooBar is not an actual JavaScript value, so you can't compare to it
+    // if ( fooBar instanceof FooBar ) {
+    // Or destructure using 'as'
+    const { foo } = fooBar;
+    console.log( 'foo', foo );
   }
 }
 
-// This is called a discriminated union
-type FooBar = Foo | Bar;
+type SortDirection = 'ascending' | 'descending';
+type SortFields = 'firstName' | 'lastName' | 'city' | 'state';
+
+enum EnumeratedSortFields {
+  FIRSTNAME = 'firstName',
+  LASTNAME = 'lastName',
+  CITY = 'city',
+  STATE = 'state',
+}
+
+function doSomething( union: SortFields, enm: EnumeratedSortFields ) {
+  console.log( 'Sort value:', union, enm );
+}
+
+doSomething( 'firstName', EnumeratedSortFields.LASTNAME );
 
 export {};

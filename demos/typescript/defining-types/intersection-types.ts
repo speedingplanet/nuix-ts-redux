@@ -1,4 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+// Intersection types are additive, not exclusive, like union types
+// One or the other, not both
+let stringOrNumber: string | number;
+
+// What is this even?
+let stringAndNumber: string & number;
+
 // Intersection types combine types
 export type TVehicle = {
   make: string;
@@ -8,13 +15,6 @@ export type TVehicle = {
 type TCar = TVehicle & {
   numWheels: number;
 };
-
-// Intersection types are additive, not exclusive, like union types
-// One or the other, not both
-let stringOrNumber: string | number;
-
-// What is this even?
-let stringAndNumber: string & number;
 
 // Similar to the way that interfaces extend each other
 export interface IVehicle {

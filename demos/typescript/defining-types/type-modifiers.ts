@@ -10,11 +10,15 @@ export interface ICar {
 // Index signatures
 // keys have to be strings or numbers
 export interface Extensible {
+  // [k: string]: string | number;
+  // [k: number]: string | number;
+  // [k: string | number]: string | number | boolean | Array<unknown> | object;
+  [k: string | number]: string | number | boolean | unknown[] | object;
   someRequiredString: string;
   // Arbitrary other props, but they must be strings!
-  [otherProps: string]: string;
+  // [otherProps: string]: string;
   // This causes errors, though
-  // someRequiredNumber: number;
+  someRequiredNumber: number;
   // Possible fix
   // [otherProps: string]: string | number;
 }
