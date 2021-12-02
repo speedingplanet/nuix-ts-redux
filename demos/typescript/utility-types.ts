@@ -82,19 +82,20 @@ keyof Person,
 type NamedPerson = Pick<Person, 'firstName' | 'lastName'>;
 
 // Omit<type, props>
-type NoWeekendsCalendar = Omit<WeeklyCalendar, 'SATURDAY' | 'SUNDAY'>;
+// type NoWeekendsCalendar = Omit<WeeklyCalendar, 'SATURDAY' | 'SUNDAY'>;
+type NoWeekendsCalendar = Omit<WeeklyCalendar, Days.Saturday | Days.Sunday>;
 
 // Extract<type, union>
 // Pick for a union
-type Weekends = Extract<Days, 'SATURDAY' | 'SUNDAY'>;
+type Weekends = Extract<Days, Days.Saturday | Days.Sunday>;
 
 // Exclude<type, union>
 // Omit for a union
-type Weekdays = Exclude<Days, 'SATURDAY' | 'SUNDAY'>;
+type Weekdays = Exclude<Days, Days.Saturday | Days.Sunday>;
 
 // Parameters (also ConstructorParameters)
 // Get the parameters of a function as a _tuple_ type
-type BinaryOperator = ( x: number, y: number ) => number;
+type BinaryOperator = ( x: number, y: number, z: string ) => number;
 type BinaryOperatorParameters = Parameters<BinaryOperator>;
 
 // ReturnType
