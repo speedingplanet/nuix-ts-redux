@@ -7,12 +7,7 @@ module.exports = {
       jsx: true,
     },
   },
-  extends: [
-    '@speedingplanet/eslint-config/typescript',
-    'react-app',
-    'react-app/jest',
-    'plugin:react-hooks/recommended',
-  ],
+  extends: [ 'react-app', 'react-app/jest', 'plugin:react-hooks/recommended' ],
   rules: {
     '@typescript-eslint/restrict-template-expressions': [ 'off' ],
     '@typescript-eslint/no-base-to-string': [ 'off' ],
