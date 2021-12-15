@@ -6,6 +6,7 @@ import HelloWorldProps from './HelloWorldProps';
 import LiveGreeter from './LiveGreeter';
 import LiveGreeterClass from './LiveGreeterClass';
 import MinimalState from './MinimalState';
+import ReduxCounter from './redux-counter/ReduxCounter';
 
 export default function ExperimentsView(): JSX.Element {
   return (
@@ -20,6 +21,9 @@ export default function ExperimentsView(): JSX.Element {
         <div className="col">
           <nav>
             <ul>
+              <li>
+                <Link to="/experiments/redux-counter">Redux Counter</Link>
+              </li>
               <li>
                 <Link to="/experiments/hello-world">
                   Hello, world (component)!
@@ -51,6 +55,9 @@ export default function ExperimentsView(): JSX.Element {
         </div>
         {/* Display */}
         <div className="col">
+          <Route path="/experiments/redux-counter">
+            <ReduxCounter />
+          </Route>
           <Route path="/experiments/hello-world">
             <HelloWorld />
           </Route>
