@@ -1,4 +1,5 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
+// Import the logger to see reducer execution logged to the console
 // import logger from 'redux-logger';
 
 const counterSlice = createSlice( {
@@ -12,6 +13,7 @@ const counterSlice = createSlice( {
 
 export const store = configureStore( {
   reducer: counterSlice.reducer,
+  devTools: { name: 'Counter Redux Toolkit' },
 } );
 export type ReduxState = ReturnType<typeof reducer>;
 

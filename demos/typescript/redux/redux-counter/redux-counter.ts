@@ -24,48 +24,51 @@ let addAction = {
 };
 */
 
-const add = (amount: number) => ({
+const add = ( amount: number ) => ( {
   type: 'ADD',
   payload: {
     amount,
   },
-});
+} );
 
 // How do we implement/apply changes?
 const reducer: Reducer<ReduxState, AnyAction> = (
   state = initialState,
-  action
+  action,
 ) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { ...state, counter: state.counter + 1 };
-    case 'DECREMENT':
-      return { ...state, counter: state.counter - 1 };
-    case 'ADD':
-      return { ...state, counter: state.counter + action.payload.amount };
+  switch ( action.type ) {
+  case 'INCREMENT':
+    return { ...state, counter: state.counter + 1 };
+  case 'DECREMENT':
+    return { ...state, counter: state.counter - 1 };
+  case 'ADD':
+    return {
+      ...state,
+      counter: state.counter + Number( action.payload.amount ),
+    };
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 
 // How do we bring these tools together?
-const store = createStore(reducer, initialState);
+const store = createStore( reducer, initialState );
 let lastState: ReduxState;
-store.subscribe(() => {
+store.subscribe( () => {
   let currentState = store.getState();
-  if (currentState !== lastState) {
-    console.log('State was updated:', currentState);
+  if ( currentState !== lastState ) {
+    console.log( 'State was updated:', currentState );
   } else {
-    console.log('No update');
+    console.log( 'No update' );
   }
 
   lastState = currentState;
-});
+} );
 
-store.dispatch(incrementAction);
-store.dispatch(incrementAction);
-store.dispatch(decrementAction);
-store.dispatch(add(10));
-store.dispatch(incrementAction);
-store.dispatch(incrementAction);
+store.dispatch( incrementAction );
+store.dispatch( incrementAction );
+store.dispatch( decrementAction );
+store.dispatch( add( 10 ) );
+store.dispatch( incrementAction );
+store.dispatch( incrementAction );

@@ -6,7 +6,7 @@ export interface Wrapper<T> {
 
 // Generic class
 export class Dao<T> {
-  fetchAll(): Promise<T[]> {
+  async fetchAll(): Promise<T[]> {
     return Promise.resolve( [] );
   }
 

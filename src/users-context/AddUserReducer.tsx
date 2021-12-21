@@ -18,14 +18,14 @@ function reducer( state: UserProfile, action: UserAction ) {
   switch ( action.type ) {
   case 'displayName':
   case 'userType':
-    return { ...state, [action.type]: action.payload };
+    return { ...state, [ action.type ]: action.payload };
   case 'street':
   case 'city':
   case 'state':
   case 'postalCode':
     return {
       ...state,
-      address: { ...state.address, [action.type]: action.payload },
+      address: { ...state.address, [ action.type ]: action.payload },
     };
   default:
     throw new Error( 'Missed case!' );

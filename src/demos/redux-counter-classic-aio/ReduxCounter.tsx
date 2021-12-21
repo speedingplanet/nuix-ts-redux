@@ -37,10 +37,11 @@ const reducer: Reducer<ReduxState, AnyAction> = (
   }
 };
 
-const store = createStore(
-  reducer,
-  composeWithDevTools( applyMiddleware( logger ) ),
-);
+let composeEnhancers = composeWithDevTools( {
+  name: 'Counter All-In-One File Redux',
+} );
+
+const store = createStore( reducer, composeEnhancers( applyMiddleware( logger ) ) );
 
 type CounterProps = {
   value: number;
