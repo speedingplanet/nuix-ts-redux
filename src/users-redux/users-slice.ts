@@ -1,4 +1,4 @@
-import { User } from '@speedingplanet/rest-server';
+import { User, UserProfile } from '@speedingplanet/rest-server';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export enum AsyncStatus {
@@ -27,8 +27,15 @@ let usersSlice = createSlice( {
     loadUsers( state, action: PayloadAction<User[]> ) {
       state.users = action.payload;
     },
-    addUser( state, action: PayloadAction<User> ) {
-      state.users.push( action.payload );
+    addUser( state, action: PayloadAction<UserProfile> ) {
+      const user: User = {
+        ...action.payload,
+        id: String( Date.now() ),
+        version: 1,
+        lastUpdated: new Date(),
+        active: true,
+      };
+      state.users.push( user );
     },
     setFilter( state, action: PayloadAction<string> ) {
       state.filter = action.payload;

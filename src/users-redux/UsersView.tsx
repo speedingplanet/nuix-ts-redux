@@ -4,9 +4,16 @@ import { Provider } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import AddUser from '../users/AddUser';
 import FindUsers from '../users/FindUsers';
-import UsersGrid from '../users/UsersGrid';
+import BrowseUsers from '../users/BrowseUsers';
+import { addUser, setFilter } from './users-slice';
+import { useAppDispatch, useAppSelector } from './users-hooks';
+import { store } from './users-store';
 
 const UsersView = () => {
+  let users = useAppSelector( ( state ) => state.users.users );
+  let filter = useAppSelector( ( state ) => state.users.filter );
+  let dispatch = useAppDispatch();
+
   return (
     <>
       <section>
@@ -32,19 +39,29 @@ const UsersView = () => {
         </div>
       </section>
       <Route path="/users-redux/find">
-        <h3>Find Users</h3>
-        {/* <FindUsers /> */}
+        <FindUsers
+          searchDisplayName={( displayName ) => dispatch( setFilter( displayName ) )}
+        />
+        <BrowseUsers
+          users={users.filter( ( user ) => user.displayName.includes( filter ) )}
+        />
       </Route>
       <Route path="/users-redux/browse">
         <h3>Browse Users</h3>
-        {/* <UsersGrid /> */}
+        <BrowseUsers users={users} />
       </Route>
       <Route path="/users-redux/add">
         <h3>Add User</h3>
-        {/* <AddUser /> */}
+        <AddUser createUser={( userProfile ) => dispatch( addUser( userProfile ) )} />
       </Route>
     </>
   );
 };
 
-export default UsersView;
+const Wrapper = () => (
+  <Provider store={store}>
+    <UsersView />
+  </Provider>
+);
+
+export default Wrapper;
