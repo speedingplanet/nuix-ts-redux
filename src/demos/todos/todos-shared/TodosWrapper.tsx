@@ -9,9 +9,12 @@ const TodosWrapper = () => {
 
   const handleToggleTodo = ( todo: Todo ) => {
     let localTodos = [ ...todos ];
-    let toggledTodo = localTodos.find( ( t ) => t.id === todo.id );
-    if ( toggledTodo ) {
-      toggledTodo.completed = !toggledTodo.completed;
+    let todoPosition = localTodos.findIndex( ( t ) => t.id === todo.id );
+    if ( todoPosition > -1 ) {
+      let toggleTodo = { ...localTodos[ todoPosition ] };
+      toggleTodo.completed = !toggleTodo.completed;
+      localTodos[ todoPosition ] = toggleTodo;
+
       setTodos( localTodos );
     }
   };
@@ -24,8 +27,9 @@ const TodosWrapper = () => {
       completed: false,
     };
 
-    todos.push( todo );
-    setTodos( todos );
+    let localTodos = [ ...todos ];
+    localTodos.push( todo );
+    setTodos( localTodos );
   };
 
   const handleHideCompleted = ( hide: boolean ) => {

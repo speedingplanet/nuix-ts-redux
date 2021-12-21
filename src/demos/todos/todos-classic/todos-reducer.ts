@@ -48,9 +48,14 @@ const reducer: Reducer<TodosState, AnyAction> = (
   case ActionsEnum.toggleTodo: {
     let foundTodo = state.byId[ action.payload.id ];
     if ( foundTodo ) {
+      foundTodo = { ...foundTodo };
       foundTodo.completed = !foundTodo.completed;
       return {
         ...state,
+        byId: {
+          ...state.byId,
+          [ action.payload.id ]: foundTodo,
+        },
       };
     }
     return state;
