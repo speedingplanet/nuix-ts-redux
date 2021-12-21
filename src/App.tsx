@@ -4,6 +4,7 @@ import DemosView from './demos/DemosView';
 import ExperimentsView from './experiments/ExperimentsView';
 import TransactionsView from './transactions/TransactionsView';
 import UsersView from './users/UsersView';
+import UsersViewRedux from './users-redux/UsersView';
 import UsersViewContext from './users-context/UsersViewContext';
 
 // class -> className
@@ -53,6 +54,15 @@ function App(): JSX.Element {
                 <NavLink
                   activeClassName="fw-bold"
                   className="nav-link"
+                  to="/users-redux"
+                >
+                  Users (with Redux)
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  activeClassName="fw-bold"
+                  className="nav-link"
                   to="/transactions"
                 >
                   Transactions
@@ -78,6 +88,9 @@ function App(): JSX.Element {
         </Route>
         <Route path="/users-context">
           <UsersViewContext />
+        </Route>
+        <Route path="/users-redux">
+          <UsersViewRedux />
         </Route>
         <Route path="/transactions">
           <TransactionsView />
