@@ -19,6 +19,7 @@ import TodosWrapper from './todos/todos-shared/TodosWrapper';
 import TodosClassic from './todos/todos-classic/TodosClassic';
 import TodosRTK from './todos/todos-rtk/TodosRTK';
 import TodosAsyncRTK from './todos/todos-rtk-async/TodosAsyncRTK';
+import SelectorContainer from './selector/SelectorContainer';
 
 export default function DemosView(): JSX.Element {
   return (
@@ -76,6 +77,11 @@ export default function DemosView(): JSX.Element {
                 activeClassName="fw-bold"
               >
                 Todos (Redux Toolkit & Async)
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/demos/selectors" activeClassName="fw-bold">
+                Redux Selectors
               </NavLink>
             </li>
             <li>
@@ -167,6 +173,9 @@ export default function DemosView(): JSX.Element {
           </Route>
           <Route path="/demos/redux-counter-classic-aio">
             <ReduxContainerClassicAllInOne />
+          </Route>
+          <Route path="/demos/selectors">
+            <SelectorContainer />
           </Route>
           <Route path="/demos/event-handling">
             <EventHandling />
