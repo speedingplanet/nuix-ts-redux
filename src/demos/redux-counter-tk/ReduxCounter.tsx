@@ -1,5 +1,5 @@
+import { Dispatch } from '@reduxjs/toolkit';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import Counter, { CounterProps } from './Counter';
 import { increment, decrement, ReduxState } from './counter-slice';
 
@@ -25,6 +25,7 @@ as we do in Counter.js, but rather
 onClick={() => callSomeAction(someValue)}
 So there is no real fix for this particular issue.
 */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const mapDispatchToProps = (
   dispatch: Dispatch,
 ): Omit<CounterProps, 'value'> => ( {
@@ -33,6 +34,7 @@ const mapDispatchToProps = (
   decrement: () => dispatch( decrement() ),
 } );
 
+// Don't use this, see above
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const betterMapDispatchToProps = {
   increment,

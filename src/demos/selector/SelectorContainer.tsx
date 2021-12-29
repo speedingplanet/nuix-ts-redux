@@ -139,6 +139,14 @@ const ChildSelector = () => {
   const ref = useAppSelector( ( state ) => {
     return state.parent.child.childRef;
   } );
+
+  const grandchildValue = useAppSelector(
+    ( state ) => state.parent.child.grandchild.grandchildValue,
+  );
+  const grandchildRef = useAppSelector(
+    ( state ) => state.parent.child.grandchild.grandchildRef,
+  );
+
   return (
     <div>
       <h4>Child</h4>
@@ -147,7 +155,10 @@ const ChildSelector = () => {
       <LastRendered />
       <div className="row">
         <div className="col">
-          <GrandchildSelector />
+          <GrandchildSelector
+            grandchildRef={grandchildRef}
+            grandchildValue={grandchildValue}
+          />
         </div>
         <div className="col">
           <GrandchildNoSelectorRedux />
@@ -182,20 +193,17 @@ const mapChildStateToProps = ( state: SelectorState ) => {
 };
 */
 
-const GrandchildSelector = () => {
-  const value = useAppSelector(
-    ( state ) => state.parent.child.grandchild.grandchildValue,
-  );
-  const ref = useAppSelector(
-    ( state ) => state.parent.child.grandchild.grandchildRef,
-  );
+const GrandchildSelector = ( {
+  grandchildValue,
+  grandchildRef,
+}: GrandchildProps ) => {
   return (
     <div style={{ border: '2px solid green' }}>
       <h5>
         Grandchild <em>with</em> selector
       </h5>
-      <p>Value: {value}</p>
-      <p>Ref: {ref.text}</p>
+      <p>Value: {grandchildValue}</p>
+      <p>Ref: {grandchildRef.text}</p>
       <LastRendered />
     </div>
   );

@@ -5,6 +5,20 @@ type ById = {
   [id: number]: Todo;
 };
 
+/*
+  state = {
+    byId: {
+      1: {
+        text: 'Do this',
+        completed: false,
+        id: 1
+      },
+      2: ...
+    }
+  }
+
+  Or use normalizr
+*/
 export type TodosState = {
   byId: ById;
   allIds: number[];
